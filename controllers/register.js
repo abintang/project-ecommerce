@@ -30,7 +30,7 @@ router.post('/', function(req,res) {
             if (req.body.password == req.body.repassword) {
                 register.validasi(data, function(valid){
                     if(valid) {
-                        res.redirect('/index');
+                        res.redirect('/login');
                     } else {
                         res.redirect('register', {errors: errors});
                     }
