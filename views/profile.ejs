@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+    <%- include("./partials/head.ejs") %>
+</head>
+
+<body>
+    <header class="section-header">
+        <%- include("./partials/user/header.ejs") %>
+    </header>
+    <!-- ========================= SECTION PAGETOP ========================= -->
+    <section class="section-content padding-y section-pagetop bg">
+        
+        <!-- ============================ COMPONENT PROFILE  ================================= -->
+        <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+        <div class="card-body">
+        <% if(typeof result!=='undefined') { %>
+            <% for (var i=0 ; i<result.length ; i++) { %>
+        <h4 class="card-title mb-4" style="text-align: center;"><i class="far fa-address-card"></i> My Account</h4>
+           <div class="form-group" style="text-align: center;">
+                <% if (result[i].jenis_kelamin == 'Pria') { %>
+                    <img src="../images/maleavatar.png" class="img-sm rounded-circle border">
+                <% } else { %>
+                    <img src="../images/femaleavatar.png" class="img-sm rounded-circle border">
+                <% } %>
+           </div>
+          <div class="form-row">
+              <div class="col form-group">
+                  <label>Nama</label>
+                    <p class="form-control"><%= result[i].nama_user %></p>
+              </div> <!-- form-group end.// -->
+              <div class="col form-group">
+                  <label>Email</label>
+                  <p class="form-control"><%= result[i].email %></p>
+              </div> <!-- form-group end.// -->
+          </div> <!-- form-row.// -->
+          
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Jenis Kelamin</label>
+                <p class="form-control"><%= result[i].jenis_kelamin %></p>
+              </div> <!-- form-group end.// -->
+              <div class="form-group col-md-6">
+                <label>Nomor Telepon</label>
+                <p class="form-control"><%= result[i].no_tlp %></p>
+              </div> <!-- form-group end.// -->
+          </div> <!-- form-row.// -->
+  
+          <div class="form-row">
+            <label>Alamat Lengkap</label>
+            <p class="form-control"><%= result[i].alamat %></p>
+          </div> <!-- form-row.// -->
+          <br>
+          <div style="text-align: center;">
+            <a class="btn btn-outline-info btn-block" href="/profile/edituser" ><i class="fas fa-user-edit"></i> Edit Data Account</a>
+            </div>
+            <br>
+            <h5 class="card-title mb-" style="text-align: left;">My Activity</h4>
+                    <nav class="card">
+                        <ul class="menu-category">
+                            <li><a href="/order"><i class="fas fa-shopping-bag"></i>&emsp;My Orders</a></li>
+                            <li><a href="/cart"><i class="fa fa-shopping-cart"></i>&emsp;My Cart</a></li>
+                            <li><a href="/wishlist"><i class="fa fa-heart"></i>&emsp;My Wishlist</a></li>
+                        </ul>
+                    </nav>
+        </div> <!-- card-body.// -->
+        
+      </div> <!-- card .// -->
+      
+      <% } %>
+    <% } %>
+  <!-- ============================ COMPONENT PROFILE END.// ================================= -->
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+    <footer class="section-footer border-top">
+        <%- include("./partials/footer.ejs") %>
+    </footer>
+        <!-- End Footer Area -->
+    </div>
+    
+</body>
+
+</html>

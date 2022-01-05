@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+    <%- include("./partials/head.ejs") %>
+</head>
+
+<body>
+    <header class="section-header">
+        <%- include("./partials/header.ejs") %>
+    </header>
+    <section class="section-main bg padding-y">
+        <div class="container">
+        
+        <div class="row">
+            <aside class="col-md-3">
+                <h4 class="text-center">Category Product</h4>
+                <nav class="card">
+                    <ul class="menu-category">
+                        <li><a href="/product/tanaman">Tanaman Hias  </a></li>
+                        <li><a href="/product/bibit">Bibit Tanaman Hias </a></li>
+                        <li>
+                            <img class="card-img-top" src="images/banners/banner3.png" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">Walaupun sedikit, namun berarti.</p>
+                              </div>
+                        </li>
+                    </ul>
+                </nav>
+            </aside> <!-- col.// -->
+            <div class="col-md-9">
+                <article class="banner-wrap">
+                    <img src="images/banners/banner1.jpg" class="w-100 rounded">
+                </article>
+            </div> <!-- col.// -->
+        </div> <!-- row.// -->
+        </div> <!-- container //  -->
+        </section>
+        <section class="section-specials padding-y border-bottom">
+            <div class="container">	
+            <div class="row">
+            <div class="col-md-4">	
+                        <figure class="itemside">
+                            <div class="aside">
+                                <span class="icon-sm rounded-circle bg-primary">
+                                    <i class="fa fa-money-bill-alt white"></i>
+                                </span>
+                            </div>
+                            <figcaption class="info">
+                                <h6 class="title">Harga Terjangkau</h6>
+                                <p class="text-muted">Product yang tersedia disini dijual dengan harga yang terjangkau, dan dijual dengan kualitas terbaik !</p>
+                            </figcaption>
+                        </figure> <!-- iconbox // -->
+                </div><!-- col // -->
+                <div class="col-md-4">
+                        <figure class="itemside">
+                            <div class="aside">
+                                <span class="icon-sm rounded-circle bg-danger">
+                                    <i class="fa fa-comment-dots white"></i>
+                                </span>
+                            </div>
+                            <figcaption class="info">
+                                <h6 class="title">Customer Support Hingga 24 Jam</h6>
+                                <p class="text-muted">Fast Response Customer Support yang telah disertai dengan chat-bot</p>
+                            </figcaption>
+                        </figure> <!-- iconbox // -->
+                </div><!-- col // -->
+                <div class="col-md-4">
+                        <figure class="itemside">
+                            <div class="aside">
+                                <span class="icon-sm rounded-circle bg-success">
+                                    <i class="fa fa-truck white"></i>
+                                </span>
+                            </div>
+                            <figcaption class="info">
+                                <h6 class="title">Pengiriman Secepat Kilat</h6>
+                                <p class="text-muted">Pengiriman super cepat yang telah didukung oleh seluruh jasa pengiriman yang tersedia !</p>
+                            </figcaption>
+                        </figure> <!-- iconbox // -->
+                </div><!-- col // -->
+            </div> <!-- row.// -->
+            </div> <!-- container.// -->
+            </section>
+            <!-- ========================= SECTION  ========================= -->
+<section class="section-name  padding-y-sm">
+    <div class="container">
+    
+    <header class="section-heading">
+        <h3 class="section-title">Popular products</h3>
+    </header><!-- sect-heading -->
+    
+        
+    <div class="row">
+        <% if(typeof result!=='undefined') { %>
+            <% for (var i=0 ; i<result.length ; i++) { %>
+        <div class="col-md-3">
+            <div href="/product/productdetails/<%= result[i].id %>" class="card card-product-grid">
+                <a href="/product/productdetails/<%= result[i].id %>" class="img-wrap"> <img src="/images/<%=result[i].foto; %>"> </a>
+                <figcaption class="info-wrap">
+                    <a href="/product/productdetails/<%= result[i].id %>" class="title"><%= result[i].nama_product %></a>
+                    <div class="price mt-1"><%= rupiah.convert(result[i].harga) %></div> <!-- price-wrap.// -->
+                </figcaption>
+            </div>
+        </div> <!-- col.// -->
+            <% } %>
+		<% } %>
+    </div> <!-- row.// -->
+    
+    </div><!-- container // -->
+    </section>
+    <section class="section-pagetop bg">
+        <div class="row">
+            <aside class="col-md-6">
+        <!-- ================== COMPONENT SLIDER  BOOTSTRAP  ==================  -->
+        <div id="carousel1_indicator" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel1_indicator" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel1_indicator" data-slide-to="1"></li>
+            <li data-target="#carousel1_indicator" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="images/banners/slide1.jpg" alt="First slide"> 
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="images/banners/slide2.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="images/banners/slide3.jpg" alt="Third slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carousel1_indicator" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel1_indicator" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div> 
+        <!-- ==================  COMPONENT SLIDER BOOTSTRAP end.// ==================  .// -->	
+        <br><br>	
+            </aside> <!-- col.// -->
+            <aside class="col-md-6">
+        <!-- ================ COMPONENT SLIDER  BOOTSTRAP FADE ====================  -->
+        <div id="carousel2_indicator" class="carousel slide carousel-fade" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="images/banners/slide1.jpg" alt="First slide">
+              <article class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt.</p>
+              </article> <!-- carousel-caption .// -->
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="images/banners/slide2.jpg" alt="Second slide">
+              <article class="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt.</p>
+              </article> <!-- carousel-caption .// -->
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="images/banners/slide3.jpg" alt="Third slide">
+              <article class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt</p>
+              </article> <!-- carousel-caption .// -->
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carousel2_indicator" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel2_indicator" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+            </aside>
+            </div>
+    </section>
+    <!-- ========================= SECTION  END// ========================= -->
+    <footer class="section-footer border-top">
+        <%- include("./partials/footer.ejs") %>
+    </footer>
+        <!-- End Footer Area -->
+    </div>
+    
+</body>
+
+</html>

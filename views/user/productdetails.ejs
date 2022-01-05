@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+    <%- include("../partials/head.ejs") %>
+</head>
+
+<body>
+    <header class="section-header">
+        <%- include("../partials/backup/headeruser.ejs") %>
+    </header>
+    <!-- ========================= SECTION PAGETOP ========================= -->
+<section class="section-pagetop bg">
+    <div class="container">
+        <h2 class="title-page">Products</h2>
+        <nav>
+        <ol class="breadcrumb text-white">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/product">Product</a></li>
+        </ol>  
+        </nav>
+    </div> <!-- container //  -->
+    </section>
+    <!-- ========================= SECTION INTRO END// ========================= -->
+    <!-- ============================ COMPONENT 1 ================================= -->
+	<% if(typeof result!=='undefined') { %>
+        <% for (var i=0 ; i<result.length ; i++) { %>
+<form method="post" action="/product/addtocart/<%= result[i].id %>">
+<div class="card">
+	<div class="row no-gutters">
+		<aside class="col-md-6">
+<article class="gallery-wrap"> 
+<div class="img-big-wrap">
+  <div> <a href="/images/<%=result[i].foto; %>"><img src="/images/<%=result[i].foto; %>"></a></div>
+</div> <!-- slider-product.// -->
+<div class="thumbs-wrap">
+  <a class="item-thumb"> <img src="../../images/ongkir.png"></a>
+  <a class="item-thumb"> <img src="../../images/ori.png"></a>
+  <a class="item-thumb"> <img src="../../images/moneyback.png"></a>
+</div> <!-- slider-nav.// -->
+</article> <!-- gallery-wrap .end// -->
+		</aside>
+		<main class="col-md-6 border-left">
+<article class="content-body">
+
+<h2 class="title"><%= result[i].nama_product %></h2>
+
+<div class="rating-wrap my-3">
+	<ul class="rating-stars">
+		<li style="width:100%" class="stars-active"> 
+			<i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+			<i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+			<i class="fa fa-star"></i> 
+		</li>
+		<li>
+			<i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+			<i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+			<i class="fa fa-star"></i> 
+		</li>
+	</ul>
+</div>
+
+<div class="mb-3"> 
+	<var class="price h4"><%= rupiah.convert(result[i].harga) %></var> 
+	<input type="hidden" id="harga" name="harga" value="<%= result[i].harga %>">
+	<span class="text-muted">/per product</span> 
+</div> <!-- price-detail-wrap .// -->
+
+<p><%= result[i].keterangan %></p>
+
+
+<dl class="row">
+  <dt class="col-sm-3">Popular :</dt>
+  <dd class="col-sm-9"><%= result[i].popular %></dd>
+
+  <dt class="col-sm-3">Category :</dt>
+  <dd class="col-sm-9"><%= result[i].kategori %></dd>
+
+</dl>
+
+<hr>
+	<div class="form-row">
+		<div class="form-group col-md flex-grow-0">
+			<label>Quantity</label>
+			<div class="input-group mb-3 input-spinner">
+				<div class="input-group-prepend">
+					<button class="btn btn-light" type="button" id="button-minus" onclick="decreaseValue()"> &minus; </button>
+				  </div>
+				  <input type="number" class="form-control" name="quantity" id="number" value="1">
+				  <div class="input-group-append">
+					<button class="btn btn-light" type="button" id="button-plus" onclick="increaseValue()"> + </button>
+				  </div>
+			</div>
+		</div> <!-- col.// -->
+	</div> <!-- row.// -->
+
+	<button class="btn  btn-outline-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </button>
+	</form>
+	<td class="text-right"> 
+		<a data-original-title="Add to Wishlist" title="" href="/product/addwishlist/<%= result[i].id %>" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a> 
+</article> <!-- product-info-aside .// -->
+		</main> <!-- col.// -->
+	</div> <!-- row.// -->
+</div> <!-- card.// -->
+<% } %>
+    <% } %>
+	<section class="section-pagetop bg">
+        
+    </section>
+<!-- ============================ COMPONENT 1 END .// ================================= -->
+    <footer class="section-footer border-top">
+        <%- include("../partials/backup/footer.ejs") %>
+    </footer>
+        <!-- End Footer Area -->
+    </div>
+    
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+    <%- include("./partials/head.ejs") %>
+</head>
+
+<body>
+    <header class="section-header">
+        <%- include("./partials/user/header.ejs") %>
+    </header>
+    <!-- ========================= SECTION PAGETOP ========================= -->
+<section class="section-pagetop bg">
+    <div class="container">
+        <h2 class="title-page">Wishlist</h2>
+        <nav>
+            <ol class="breadcrumb text-white">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/wishlist">Wishlist</a></li>
+            </ol>  
+            </nav>
+    </div> <!-- container //  -->
+    </section>
+    <!-- ========================= SECTION INTRO END// ========================= -->
+    
+    <!-- ========================= SECTION CONTENT ========================= -->
+    <section class="section-content padding-y">
+    <div class="container">
+    <main>
+        <% if(typeof result!=='undefined') { %>
+            <% for (var i=0 ; i<result.length ; i++) { %>
+    <article class="card card-product-list">
+        <div class="row no-gutters">
+            <aside class="col-md-3">
+                <a href="/images/<%=result[i].foto; %>" class="img-wrap">
+                    <img src="/images/<%=result[i].foto; %>">
+                </a>
+            </aside> <!-- col.// -->
+            <div class="col-md-6">
+                <div class="info-main">
+                    <a href="/product/productdetails/<%= result[i].id %>" class="h5 title"><%= result[i].nama_product %></a>
+                    <div class="rating-wrap mb-3">
+                        <ul class="rating-stars">
+                            <li style="width:100%" class="stars-active"> 
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                <i class="fa fa-star"></i> 
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                <i class="fa fa-star"></i> 
+                            </li>
+                        </ul>
+                        <div class="label-rating">10/10</div>
+                    </div> <!-- rating-wrap.// -->
+                    
+                    <p> <%= result[i].keterangan %> </p>
+                </div> <!-- info-main.// -->
+            </div> <!-- col.// -->
+            <aside class="col-sm-3">
+                <div class="info-aside">
+                    <div class="price-wrap">
+                        <span class="price h5"> <%= rupiah.convert(result[i].harga) %> </span>	
+                    </div> <!-- info-price-detail // -->
+                    <p class="text-success">Gratis Ongkir</p>
+                    <br>
+                    <p>
+                        <form method="post" action="/product/addtocart/<%= result[i].id %>">
+                            <input type="hidden" id="harga" name="harga" value="<%= result[i].harga %>">
+                            <input type="hidden" class="form-control" name="quantity" id="number" value="1">
+                            <button class="btn btn-outline-primary btn-block"> Add to cart 
+                                <i class="fa fa-shopping-cart"></i> 
+                            </button>
+                        </form>
+                        <br>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#wishlist<%= result[i].id_wishlist %>" ><i class="fa fa-trash"></i> 
+                        <span class="text">Remove</span>
+                        </button>
+  
+                        <!-- Modal -->
+                        <div class="modal fade" id="wishlist<%= result[i].id_wishlist %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-trash"></i>    Remove</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                         </div>
+                        <div class="modal-body">
+                        Apakah kamu yakin ingin menghapus data ini dari wishlist ?
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="/wishlist/removewishlist/<%= result[i].id_wishlist %>&<%= result[i].id %>" class="btn btn-danger">Confirm</a>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <!-- <a href="/wishlist/removewishlist/<%= result[i].id_wishlist %>&<%= result[i].id %>" class="btn btn-light btn-block"><i class="fa fa-trash"></i> 
+                            <span class="text">Remove</span>
+                        </a> -->
+                    </p>
+                </div> <!-- info-aside.// -->
+            </aside> <!-- col.// -->
+        </div> <!-- row.// -->
+    </article> <!-- card-product .// -->
+    <% } %>
+    <% } %>
+    </main> <!-- col.// -->
+    </div>
+    
+    </div> <!-- container .//  -->
+    </section>
+    <section class="section-pagetop bg">
+        
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+    <footer class="section-footer border-top">
+        <%- include("./partials/footer.ejs") %>
+    </footer>
+        <!-- End Footer Area -->
+    </div>
+    
+</body>
+
+</html>

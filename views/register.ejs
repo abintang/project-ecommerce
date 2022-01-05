@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+    <%- include("./partials/head.ejs") %>
+</head>
+
+<body>
+    <header class="section-header">
+        <%- include("./partials/header.ejs") %>
+    </header>
+    <!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+
+    <!-- ============================ COMPONENT REGISTER   ================================= -->
+        <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+          <article class="card-body">
+            <header class="mb-4"><h4 class="card-title text-center">Sign up</h4></header>
+            <% if(typeof errors !== 'undefined'){ %>
+                <div class="alert alert-danger">
+                    <h5>errors</h5>
+                <% for(var i = 0; i < errors.length; i++){ %>
+                    <p><%= errors[i].message %></p>
+                <% } %>
+                </div>
+            <% } %>
+            <form method="post">
+                    <div class="form-group">
+                        <label>Nama Lengkap</label>
+                        <input type="text" class="form-control" name="nama_user" placeholder="">
+                    </div> <!-- form-row end.// -->
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" placeholder="">
+                        <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div> <!-- form-group end.// -->
+                    <div class="form-group">
+                        <label class="custom-control custom-radio custom-control-inline">
+                          <input class="custom-control-input" checked="" type="radio" name="jenis_kelamin" value="Pria">
+                          <span class="custom-control-label"> Pria </span>
+                        </label>
+                        <label class="custom-control custom-radio custom-control-inline">
+                          <input class="custom-control-input" type="radio" name="jenis_kelamin" value="Wanita">
+                          <span class="custom-control-label"> Wanita </span>
+                        </label>
+                    </div> <!-- form-group end.// -->
+                    <div class="form-group">
+                        <label>Alamat Lengkap</label>
+                        <input type="text" class="form-control" name="alamat" placeholder="">
+                    </div> <!-- form-group end.// -->
+                    <div class="form-group">
+                        <label>Nomor Telepon</label>
+                        <input type="number" class="form-control" name="no_tlp" placeholder="">
+                    </div> <!-- form-group end.// -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Create password</label>
+                            <input class="form-control" type="password" name="password">
+                        </div> <!-- form-group end.// --> 
+                        <div class="form-group col-md-6">
+                            <label>Repeat password</label>
+                            <input class="form-control" type="password" name="repassword">
+                        </div> <!-- form-group end.// -->  
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+                    </div> <!-- form-group// -->      
+                    <div class="form-group"> 
+                        <label class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked=""> <div class="custom-control-label"> I am agree with <a href="#">terms and contitions</a>  </div> </label>
+                    </div> <!-- form-group end.// -->           
+                </form>
+            </article><!-- card-body.// -->
+        </div> <!-- card .// -->
+        <p class="text-center mt-4">Have an account? <a href="/login">Sign in</a></p>
+        <br><br>
+    <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+    
+    
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+    
+    <footer class="section-footer border-top">
+        <%- include("./partials/footer.ejs") %>
+    </footer>
+        <!-- End Footer Area -->
+    </div>
+    
+</body>
+
+</html>

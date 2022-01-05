@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+    <%- include("./partials/head.ejs") %>
+</head>
+
+<body>
+    <header class="section-header">
+        <%- include("./partials/user/header.ejs") %>
+    </header>
+    <!-- ========================= SECTION PAGETOP ========================= -->
+<section class="section-pagetop bg">
+    <div class="container">
+        <h2 class="title-page">Shopping cart</h2>
+        <nav>
+            <ol class="breadcrumb text-white">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/cart">Shopping Cart</a></li>
+            </ol>  
+        </nav>
+    </div> <!-- container //  -->
+    </section>
+    <!-- ========================= SECTION INTRO END// ========================= -->
+    
+    <!-- ========================= SECTION CONTENT ========================= -->
+    <section class="section-content padding-y">
+    <div class="container">
+    <div class="row">
+        <main class="col-md-9">
+    <div class="card">
+    
+    <table class="table table-borderless table-shopping-cart">
+    <thead class="text-muted">
+    <tr class="small text-uppercase">
+      <th scope="col">Product</th>
+      <th scope="col" width="120">Quantity</th>
+      <th scope="col" width="180">Price</th>
+      <th scope="col" class="text-right" width="180"> </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <% if(typeof result!=='undefined') { %>
+            <% for (var i=0 ; i<result.length ; i++) { %>
+        <td>
+            <figure class="itemside">
+                <div class="aside"><img src="/images/<%=result[i].foto; %>" class="img-sm"></div>
+                <figcaption class="info">
+                    <a href="/product/productdetails/<%= result[i].id %>" class="title text-dark"><%=result[i].nama_product %></a>
+                    <p class="text-muted small">Popular : <%=result[i].popular %><br>Category : <%=result[i].kategori %></p>
+                </figcaption>
+            </figure>
+        </td>
+        <td> 
+                <var class="price" style="text-align: left;"><%=result[i].quantity %></var> 
+        </td>
+        <td> 
+            <div class="price-wrap"> 
+                <var class="price"><%= rupiah.convert(result[i].total_harga) %></var> 
+                <small class="text-muted"> <%= rupiah.convert(result[i].harga) %>/product </small> 
+            </div> <!-- price-wrap .// -->
+        </td>
+
+        <td class="text-right"> 
+        <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#cart<%= result[i].id_cart %>" ><i class="fa fa-trash"></i>
+            <span class="text">Remove</span>
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="cart<%= result[i].id_cart %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-trash"></i>    Remove</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+             </div>
+            <div class="modal-body text-left">
+            Apakah kamu yakin ingin menghapus data ini dari cart ?
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <a href="/cart/removecart/<%= result[i].id_cart %>&<%= result[i].id %>" class="btn btn-danger">Confirm</a>
+            </div>
+            </div>
+            </div>
+            </div>
+        </td>
+    </tr>
+    <% } %>
+    <% } %>
+    </tbody>
+    </table>
+    
+    <div class="card-body border-top">
+        <button class="btn btn-success float-md-right" data-toggle="modal" data-target="#bayar"> Bayar <i class="fa fa-chevron-right"></i> </button>
+            <form method="post">
+            <!-- Modal -->
+					<div class="modal fade" id="bayar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-check-square"></i> Konfirmasi Pembayaran</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                         </div>
+                        <div class="modal-body">
+                        Apakah kamu yakin ingin melanjutkan proses pembayaran pada semua product yang berada di cart ?<br>
+                        <small class="text-muted">*Data yang berada di cart akan dihapus apabila kamu mengkonfirmasi pembayaran</small>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-success" type="submit">Confirm</button>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+            </form>
+    </div>	
+    </div> <!-- card.// -->
+    
+        </main> <!-- col.// -->
+        <aside class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                        <dl class="dlist-align">
+                          <dt>Total price:</dt>
+                          <dd class="text-right"><%= rupiah.convert(0) %></dd>
+                        </dl>
+                        <dl class="dlist-align">
+                          <dt>Discount:</dt>
+                          <dd class="text-right"><%= rupiah.convert(0) %></dd>
+                        </dl>
+                        <dl class="dlist-align">
+                          <dt>Total:</dt>
+                          <dd class="text-right  h5"><strong><%= rupiah.convert(0) %></strong></dd>
+                        </dl>
+                        <hr>
+                        <p class="text-center mb-3">
+                            <img src="images/misc/payments.png" height="26">
+                        </p>
+                        
+                </div> <!-- card-body.// -->
+            </div>  <!-- card .// -->
+        </aside> <!-- col.// -->
+    </div>
+    
+    </div> <!-- container .//  -->
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+    
+    <!-- ========================= SECTION  ========================= -->
+    <section class="section-name bg padding-y">
+    <div class="container">
+    <h6>Payment and refund policy</h6>
+    <p>Dengan tunduk pada syarat dan ketentuan dalam Kebijakan Pengembalian Dana 
+    dan Barang  ini serta Syarat Layanan, Pembeli dapat mengajukan permohonan untuk 
+    pengembalian barang yang dibeli ("Barang") dan/atau pengembalian dana sebelum 
+    berakhirnya Masa Garansi dlyplants.id seperti yang tercantum dalam Syarat Layanan. </p>
+    <p>Garansi dlyplants.id adalah layanan yang disediakan oleh dlyplants.id, atas 
+    permintaan Pengguna, untuk membantu Pengguna dalam menangani konflik tertentu 
+    yang mungkin timbul selama jalannya transaksi. Pengguna dapat saling berkomunikasi 
+    secara pribadi untuk menyelesaikan perbedaan mereka atau menghubungi pihak berwenang 
+    setempat untuk membantu mereka mengatasi sengketa yang terjadi sebelum, selama atau 
+    setelah menggunakan Garansi dlyplants.id.</p>
+    
+    </div><!-- container // -->
+    </section>
+    <!-- ========================= SECTION  END// ========================= -->
+    <footer class="section-footer border-top">
+        <%- include("./partials/footer.ejs") %>
+    </footer>
+        <!-- End Footer Area -->
+    </div>
+    
+</body>
+
+</html>

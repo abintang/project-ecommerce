@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+    <%- include("./partials/head.ejs") %>
+</head>
+
+<body>
+    <header class="section-header">
+        <%- include("./partials/user/header.ejs") %>
+    </header>
+    <!-- ========================= SECTION PAGETOP ========================= -->
+    <section class="section-content padding-y section-pagetop bg">
+        <!-- ============================ COMPONENT PROFILE  ================================= -->
+        <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+        <div class="card-body">
+        <form method="post">
+        <% if(typeof result!=='undefined') { %>
+            <% for (var i=0 ; i<result.length ; i++) { %>
+        <h4 class="card-title mb-4" style="text-align: center;"><i class="far fa-address-card"></i> My Account</h4>
+           <div class="form-group" style="text-align: center;">
+                <% if (result[i].jenis_kelamin == 'Pria') { %>
+                    <img src="../images/maleavatar.png" class="img-sm rounded-circle border">
+                <% } else { %>
+                    <img src="../images/femaleavatar.png" class="img-sm rounded-circle border">
+                <% } %>
+           </div>
+          <div class="form-row">
+              <div class="col form-group">
+                  <label>Nama</label>
+                  <input type="text" class="form-control" value="<%= result[i].nama_user %>" name="nama_user">
+              </div> <!-- form-group end.// -->
+              <div class="col form-group">
+                  <label>Email <small class="text-muted">*Email tidak dapat diubah</small></label>
+                  <p class="form-control"><%= result[i].email %></p>
+              </div> <!-- form-group end.// -->
+          </div> <!-- form-row.// -->
+          
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Jenis Kelamin</label>
+                <select id="inputState" class="form-control" name="jenis_kelamin">
+                  <option value="<%= result[i].jenis_kelamin %>"><%= result[i].jenis_kelamin %></option>
+                  <% if (result[i].jenis_kelamin == 'Pria') { %>
+                  <option value="Wanita">Wanita</option>
+                  <% } else { %>
+                  <option value="Pria">Pria</option>
+                  <% } %>
+                </select>
+              </div> <!-- form-group end.// -->
+              <div class="form-group col-md-6">
+                <label>Nomor Telepon</label>
+                <input type="number" class="form-control" name="no_tlp" value="<%= result[i].no_tlp %>">
+              </div> <!-- form-group end.// -->
+          </div> <!-- form-row.// -->
+  
+          <div class="form-row">
+            <label>Alamat Lengkap</label>
+            <input type="text" class="form-control" name="alamat" value="<%= result[i].alamat %>">
+          </div> <!-- form-row.// -->
+          <br>
+      
+          <button type="button" class="btn btn-outline-success btn-block" data-toggle="modal" data-target="#edit" ><i class="fas fa-cloud-upload-alt"></i> Save Data Account</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+					<div class="modal-content">
+					<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user-edit"></i>    Edit Profile Account</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					 </div>
+					<div class="modal-body">
+					Apakah kamu yakin ingin mengubah data sebelumnya ?
+					</div>
+					<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button class="btn btn-success" type="submit">Confirm</button>
+					</div>
+					</div>
+					</div>
+					</div>
+        </form>
+        </div> <!-- card-body.// -->
+      </div> <!-- card .// -->
+      <% } %>
+    <% } %>
+    <% if(typeof errors !== 'undefined'){ %>
+      <div class="alert alert-danger">
+          <h5>errors</h5>
+      <% for(var i = 0; i < errors.length; i++){ %>
+          <p><%= errors[i].message %></p>
+      <% } %>
+      </div>
+  <% } %>
+  <!-- ============================ COMPONENT PROFILE END.// ================================= -->
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+    <footer class="section-footer border-top">
+        <%- include("./partials/footer.ejs") %>
+    </footer>
+        <!-- End Footer Area -->
+    </div>
+    
+</body>
+
+</html>

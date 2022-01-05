@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <%- include("./partials/head.ejs") %>
+</head>
+
+<body>
+    <header class="section-header">
+        <%- include("./partials/header.ejs") %>
+    </header>
+    <!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y" style="min-height:84vh">
+
+    <!-- ============================ COMPONENT LOGIN   ================================= -->
+        <div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
+          <div class="card-body">
+          <h4 class="card-title mb-4 text-center">Sign in</h4>
+          <% if(typeof errors !== 'undefined'){ %>
+            <div class="alert alert-danger">
+                <h5>errors</h5>
+            <% for(var i = 0; i < errors.length; i++){ %>
+                <p><%= errors[i].message %></p>
+            <% } %>
+            </div>
+        <% } %>
+        <% if(locals.errorMessage) { %>
+            <div class="alert alert-danger" role="alert"><%= errorMessage %></div>
+            <% } %>
+          <form method="post">
+              <div class="form-group">
+                 <input name="email" class="form-control" placeholder="Email" type="text">
+              </div> <!-- form-group// -->
+              <div class="form-group">
+                <input name="password" class="form-control" placeholder="Password" type="password">
+              </div> <!-- form-group// -->
+              
+              <div class="form-group">
+                <label class="float-left custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked=""> <div class="custom-control-label"> Remember </div> </label>
+              </div> <!-- form-group form-check .// -->
+              <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+              </div> <!-- form-group// -->    
+          </form>
+          </div> <!-- card-body.// -->
+        </div> <!-- card .// -->
+    
+         <p class="text-center mt-4">Don't have account? <a href="/register">Sign up</a></p>
+         <br><br>
+    <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+    
+    
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+    
+    <footer class="section-footer border-top">
+        <%- include("./partials/footer.ejs") %>
+    </footer>
+        <!-- End Footer Area -->
+    </div>
+    
+</body>
+
+</html>
