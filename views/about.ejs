@@ -9,63 +9,45 @@
         <%- include("./partials/header.ejs") %>
     </header>
     <!-- ========================= SECTION PAGETOP ========================= -->
-    <section class="section-content padding-y">
-        <!-- ============================ COMPONENT PROFILE  ================================= -->
-	<div class="card mb-4">
-        <div class="card-body">
-        <h4 class="card-title mb-4">Profile</h4>
-       <form>
+    <!-- ========================= SECTION PAGETOP ========================= -->
+    <section class="section-pagetop bg-success">
+      <div class="container">
+          <h2 class="title-page text-white">About us</h2>
+      </div> <!-- container //  -->
+      </section>
+      <!-- ========================= SECTION INTRO END// ========================= -->
+      
+      <!-- ========================= SECTION CONTENT ========================= -->
+      <section class="section-content padding-y">
+      <div class="container">
+      
+      <header class="section-heading">
+      <h2 class="section-title">dlyplants.id</h2>
+      </header><!-- sect-heading -->
+      
+      <p>Mencari tanaman hias untuk rumah menjadi lebih mudah berkat adanya website ini. Tidak lagi 
+      harus mengunjungi toko tanaman dekat rumah untuk mencari tanaman yang sesuai dengan kemauan Anda. 
+      Dengan katalog berupa foto di website dlyplant ini dan berbagai macam pilihan tanaman dan bibit yang terdapat di 
+      masing-masing kategori, maka website ini akan mempermudah melengkapi koleksi tanaman hias Anda. </p>
+      <a href="javascript: history.back()" class="btn btn-light"> &laquo Go back</a>
+      
+      </div> <!-- container .//  -->
+      </section>
+      <!-- ========================= SECTION CONTENT END// ========================= -->
+      
+      <!-- ========================= SECTION  ========================= -->
+      <section class="section-name bg padding-y">
+      <div class="container">
+      
+      <header class="section-heading">
+      <h2 class="section-title">Website ini tuh apa sih ?</h2>
+      <p class="lead">Tujuan dibuatnya website ini adalah untuk memenuhi syarat kelulusan Mata Kuliah RPL Lanjut dan juga sebagai penambah ilmu baru selaku saya sebagai developer.</p>
+      </header><!-- sect-heading -->
+      
+      </div><!-- container // -->
+      </section>
+      <!-- ========================= SECTION  END// ========================= -->
   
-           <div class="form-group">
-               <img src="../images/avatars/avatar2.jpg" class="img-sm rounded-circle border">
-           </div>
-          <div class="form-row">
-              <div class="col form-group">
-                  <label>Name</label>
-                    <input type="text" class="form-control" value="John">
-              </div> <!-- form-group end.// -->
-              <div class="col form-group">
-                  <label>Email</label>
-                    <input type="email" class="form-control" value="Michael">
-              </div> <!-- form-group end.// -->
-          </div> <!-- form-row.// -->
-          
-          <div class="form-row">
-              <div class="form-group col-md-6">
-                <label>Country</label>
-                <select id="inputState" class="form-control">
-                  <option> Choose...</option>
-                    <option>Uzbekistan</option>
-                    <option>Russia</option>
-                    <option selected="">United States</option>
-                    <option>India</option>
-                    <option>Afganistan</option>
-                </select>
-              </div> <!-- form-group end.// -->
-              <div class="form-group col-md-6">
-                <label>City</label>
-                <input type="text" class="form-control">
-              </div> <!-- form-group end.// -->
-          </div> <!-- form-row.// -->
-  
-          <div class="form-row">
-              <div class="form-group col-md-6">
-                <label>Zip</label>
-                <input type="text" class="form-control" value="123009">
-              </div> <!-- form-group end.// -->
-              <div class="form-group col-md-6">
-                <label>Phone</label>
-                <input type="text" class="form-control" value="+123456789">
-              </div> <!-- form-group end.// -->
-          </div> <!-- form-row.// -->
-  
-          <button class="btn btn-primary btn-block">Send</button>
-        </form>
-        </div> <!-- card-body.// -->
-      </div> <!-- card .// -->
-  <!-- ============================ COMPONENT PROFILE END.// ================================= -->
-    </section>
-    <!-- ========================= SECTION CONTENT END// ========================= -->
     <footer class="section-footer border-top">
         <%- include("./partials/footer.ejs") %>
     </footer>

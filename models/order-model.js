@@ -27,7 +27,7 @@ module.exports = {
 	},
 
     orderListByProses: function(data, callback) {
-		var sql = "SELECT * FROM orderuser INNER JOIN user ON orderuser.id_user = user.id_user INNER JOIN product ON orderuser.id = product.id WHERE status LIKE 'Diproses' AND id_user=?";
+		var sql = "SELECT * FROM orderuser INNER JOIN user ON orderuser.id_user = user.id_user INNER JOIN product ON orderuser.id = product.id WHERE status LIKE 'Diproses' AND orderuser.id_user=?";
         var param = [data.id_user];
 		db.getData(sql, param, function(result) {
 			if(result==null) {
@@ -39,7 +39,7 @@ module.exports = {
 	},
 
     orderListByKirim: function(data, callback) {
-		var sql = "SELECT * FROM orderuser INNER JOIN user ON orderuser.id_user = user.id_user INNER JOIN product ON orderuser.id = product.id WHERE status LIKE 'Dikirim' AND id_user=?";
+		var sql = "SELECT * FROM orderuser INNER JOIN user ON orderuser.id_user = user.id_user INNER JOIN product ON orderuser.id = product.id WHERE status LIKE 'Dikirim' AND orderuser.id_user=?";
         var param = [data.id_user];
 		db.getData(sql, param, function(result) {
 			if(result==null) {
@@ -51,7 +51,7 @@ module.exports = {
 	},
 
     orderListByTerima: function(data, callback) {
-		var sql = "SELECT * FROM orderuser INNER JOIN user ON orderuser.id_user = user.id_user INNER JOIN product ON orderuser.id = product.id WHERE status LIKE 'Diterima' AND id_user=?";
+		var sql = "SELECT * FROM orderuser INNER JOIN user ON orderuser.id_user = user.id_user INNER JOIN product ON orderuser.id = product.id WHERE status LIKE 'Diterima' AND orderuser.id_user=?";
         var param = [data.id_user];
 		db.getData(sql, param, function(result) {
 			if(result==null) {
@@ -60,6 +60,19 @@ module.exports = {
 				callback(result);
 			}
 		});
-	}
+	},
+
+	konfirmasi: function (data, callback) {
+        var sql = "UPDATE `orderuser` SET `status`=? WHERE `id_order`=?";
+        var param = [data.status, data.id_order];
+
+        db.updateData(sql,param,function(result){
+			if(result==null) {
+				callback(false);
+			} else {
+				callback(true);
+			}
+		});
+    }
 
 }

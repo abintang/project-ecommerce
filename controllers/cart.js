@@ -43,7 +43,7 @@ router.post('/', auth, function(req, res) {
         if (valid) {
             cart.cartAllDelete(data, function(valid){
                 if (valid) {
-                    res.redirect('/index');
+                    res.redirect('/order');
                 } else {
                     res.redirect('cart');
                 }
