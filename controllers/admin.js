@@ -7,6 +7,7 @@ var authOn = require('../config/alreadyOn');
 var authAdmin = require('../config/isAdmin');
 var product = require.main.require('./models/product-model');
 var rupiah = require('rupiah-format');
+var addValidation = require.main.require('./validation/addProduct');
 
 
 router.get('/', authAdmin,function(req,res){
@@ -74,12 +75,22 @@ router.post('/listallproducts', authAdmin, function(req,res) {
         kategori: req.body.kategori,
         keterangan: req.body.keterangan
     };
-    admin.tambahProduct(data, function(valid) {
-        if(valid) {
-            res.redirect('/admin/listallproducts');
-        } else {
-            res.render('');
-        }
+    var validator = new async(addValidation.tambahProduct);
+    validator.validate(data, function(errors, fields) {
+
+    console.log(errors);
+    console.log(fields);
+    if (errors) {
+        res.render('../views/admin/erroraddproduct', {errors: errors});
+    } else {
+        admin.tambahProduct(data, function(valid) {
+            if(valid) {
+                res.redirect('/admin/listallproducts');
+            } else {
+                res.render('');
+            }
+        });
+    }
     });
 });
 
@@ -101,6 +112,14 @@ router.post('/listtanaman', authAdmin, function(req,res) {
         kategori: req.body.kategori,
         keterangan: req.body.keterangan
     };
+    var validator = new async(addValidation.tambahProduct);
+    validator.validate(data, function(errors, fields) {
+
+    console.log(errors);
+    console.log(fields);
+    if (errors) {
+        res.render('../views/admin/erroraddproduct', {errors: errors});
+    } else {
     admin.tambahProduct(data, function(valid) {
         if(valid) {
             res.redirect('/admin/listtanaman');
@@ -108,6 +127,8 @@ router.post('/listtanaman', authAdmin, function(req,res) {
             res.render('');
         }
     });
+}
+});
 });
 
 router.get('/listbibit', authAdmin, function(req,res) {
@@ -128,6 +149,14 @@ router.post('/listbibit', authAdmin, function(req,res) {
         kategori: req.body.kategori,
         keterangan: req.body.keterangan
     };
+    var validator = new async(addValidation.tambahProduct);
+    validator.validate(data, function(errors, fields) {
+
+    console.log(errors);
+    console.log(fields);
+    if (errors) {
+        res.render('../views/admin/erroraddproduct', {errors: errors});
+    } else {
     admin.tambahProduct(data, function(valid) {
         if(valid) {
             res.redirect('/admin/listbibit');
@@ -135,6 +164,8 @@ router.post('/listbibit', authAdmin, function(req,res) {
             res.render('');
         }
     });
+}
+});
 });
 
 router.get('/konfirmasi', authAdmin,function(req,res) {
@@ -147,6 +178,21 @@ router.get('/konfirmasi', authAdmin,function(req,res) {
     });
 });
 
+router.post('/konfirmasi', authAdmin, function(req,res) {
+    var data = {
+        status: req.body.status,
+        id_order: req.body.id_order
+    };
+
+    admin.konfirmasiPesanan(data, function(valid){
+        if (valid) {
+            res.redirect('/admin/diproses');
+        } else {
+            res.redirect('');
+        }
+    })
+});
+
 router.get('/diproses', authAdmin,function(req,res) {
     admin.orderListByProses(function(result) {
         if(result && result!=null) {
@@ -155,6 +201,21 @@ router.get('/diproses', authAdmin,function(req,res) {
             res.render('');
         }
     });
+});
+
+router.post('/diproses', authAdmin, function(req,res) {
+    var data = {
+        status: req.body.status,
+        id_order: req.body.id_order
+    };
+
+    admin.konfirmasiPesanan(data, function(valid){
+        if (valid) {
+            res.redirect('/admin/dikirim');
+        } else {
+            res.redirect('');
+        }
+    })
 });
 
 router.get('/dikirim', authAdmin,function(req,res) {

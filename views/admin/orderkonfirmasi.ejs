@@ -70,7 +70,32 @@
                     <%=result[i].no_tlp %>
                     </td>
                     <td>
-                    <%=result[i].status %>
+                    <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#konfir<%= result[i].id_order %>" >
+                      <span class="text">Konfirmasi Pesanan</span>
+                      </button>
+                      <!-- Modal -->
+                      <div class="modal fade" id="konfir<%= result[i].id_order %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-spinner"></i> Konfirmasi Pesanan</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                       </div>
+                      <div class="modal-body text-left">
+                      Apakah pesanan ini bisa dikonfirmasi dan akan dilanjutkan ke tahapan sedang diproses ?
+                      </div>
+                      <form method="post">
+                      <input type="hidden" class="form-control" name="status" value="Diproses">
+                      <input type="hidden" class="form-control" name="id_order" value="<%= result[i].id_order %>">
+                      <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                      <button type="submit" class="btn btn-success" >Ya</a>
+                      </form>
+                      </div>
+                      </div>
+                      </div>
                     </td>
                 </tbody>
                 <% } %>

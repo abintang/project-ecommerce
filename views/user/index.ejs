@@ -6,6 +6,18 @@
 
 <body>
     <header class="section-header">
+      <div class="alert alert-danger alert-dismissible" role="alert" id="alertLogout">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Errors!</strong><br>Logout is required, silahkan logout terlebih dahulu jikalau ingin menggunakan fitur tersebut !
+      </div>
+    <script>
+        $('#alertLogout').hide();
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get('error');
+        if(myParam == "Logout_Needed") {
+            $('#alertLogout').show();
+        }
+    </script>
         <%- include("../partials/user/header.ejs") %>
     </header>
     <section class="section-main bg padding-y">
@@ -108,6 +120,9 @@
     </div><!-- container // -->
     </section>
     <section class="section-pagetop bg">
+      <header class="section-heading">
+        <h3 class="section-title" style="text-align: center;">Images and Facts</h3>
+    </header><!-- sect-heading -->
         <div class="row">
             <aside class="col-md-6">
         <!-- ================== COMPONENT SLIDER  BOOTSTRAP  ==================  -->
@@ -145,28 +160,25 @@
         <div id="carousel2_indicator" class="carousel slide carousel-fade" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="images/banners/slide1.jpg" alt="First slide">
-              <article class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt.</p>
-              </article> <!-- carousel-caption .// -->
+              <img class="d-block w-100" src="images/banners/slide11.jpg" alt="First slide">
+              <div class="carousel-caption d-none d-md-block mb-4">
+                <h5>Fakta Unik Tanaman Hias Jenis Monstera Variegata</h5>
+                <p>Apakah kalian tahu jikalau tanaman jenis ini bisa tumbuh sampai 9 meter lho !</p>
+              </div> <!-- carousel-caption .// -->
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="images/banners/slide2.jpg" alt="Second slide">
-              <article class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt.</p>
-              </article> <!-- carousel-caption .// -->
+              <img class="d-block w-100" src="images/banners/slide12.png" alt="Second slide">
+              <div class="carousel-caption d-none d-md-block mb-4">
+                <h5>Fakta Unik Tanaman Hias Jenis Aglaonema</h5>
+                <p>Apakah kalian tahu jikalau tanaman jenis ini bisa membantu meningkatkan kualitas udara didalam ruangan lho !</p>
+              </div> <!-- carousel-caption .// -->
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="images/banners/slide3.jpg" alt="Third slide">
-              <article class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt</p>
-              </article> <!-- carousel-caption .// -->
+              <img class="d-block w-100" src="images/banners/slide13.jpg" alt="Third slide">
+              <div class="carousel-caption d-none d-md-block mb-4">
+                <h5>Tanaman Hias Termahal</h5>
+                <p>Tanaman Hias dengan harga jual termahal saat ini dipegang oleh tanaman berjenis Old Pine Bonsai, dengan harga Rp13,2 miliar</p>
+              </div> <!-- carousel-caption .// -->
             </div>
           </div>
           <a class="carousel-control-prev" href="#carousel2_indicator" role="button" data-slide="prev">

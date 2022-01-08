@@ -86,4 +86,17 @@ module.exports = {
         	}
     	});
 	},
+
+	konfirmasiPesanan: function (data, callback) {
+        var sql = "UPDATE `orderuser` SET `status`=? WHERE `id_order`=?";
+        var param = [data.status, data.id_order];
+
+        db.updateData(sql,param,function(result){
+			if(result==null) {
+				callback(false);
+			} else {
+				callback(true);
+			}
+		});
+    }
 }

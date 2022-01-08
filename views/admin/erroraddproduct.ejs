@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <%- include("../partials/admin/head.ejs") %>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <%- include("../partials/admin/header.ejs") %>
+    <%- include("../partials/admin/sidebar.ejs") %>
+    <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Errors add Products</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <% if(typeof errors !== 'undefined'){ %>
+                  <div class="alert alert-danger">
+                      <h5>errors</h5>
+                  <% for(var i = 0; i < errors.length; i++){ %>
+                      <p><%= errors[i].message %></p>
+                  <% } %>
+                  <a href="javascript: history.back()" class="btn btn-dark"> &laquo Go back</a>
+                  </div>
+              <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+</body>
+</html>
