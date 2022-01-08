@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2022 at 03:42 PM
+-- Generation Time: Jan 08, 2022 at 07:34 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -75,7 +75,6 @@ CREATE TABLE `orderuser` (
   `id` int(25) NOT NULL,
   `quantity` int(255) NOT NULL,
   `total_harga` int(255) NOT NULL,
-  `order_date` datetime NOT NULL DEFAULT current_timestamp(),
   `status` enum('Menunggu Konfirmasi','Diproses','Dikirim','Diterima') NOT NULL DEFAULT 'Menunggu Konfirmasi'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -83,10 +82,10 @@ CREATE TABLE `orderuser` (
 -- Dumping data for table `orderuser`
 --
 
-INSERT INTO `orderuser` (`id_order`, `id_user`, `id`, `quantity`, `total_harga`, `order_date`, `status`) VALUES
-(5, 1, 3, 3, 900000, '2022-01-05 15:26:22', 'Menunggu Konfirmasi'),
-(6, 1, 4, 1, 15000, '2022-01-05 15:26:22', 'Diproses'),
-(7, 1, 1, 3, 7500000, '2022-01-05 15:26:22', 'Dikirim');
+INSERT INTO `orderuser` (`id_order`, `id_user`, `id`, `quantity`, `total_harga`, `status`) VALUES
+(5, 1, 3, 3, 900000, 'Menunggu Konfirmasi'),
+(6, 1, 4, 1, 15000, 'Diproses'),
+(7, 1, 1, 3, 7500000, 'Dikirim');
 
 -- --------------------------------------------------------
 
@@ -113,7 +112,12 @@ INSERT INTO `product` (`id`, `nama_product`, `harga`, `keterangan`, `kategori`, 
 (2, 'Anthurium Silver Hope', 450000, 'Tanaman ini adalah tanaman hias', 'Tanaman Hias', 'silverhope.jpg', 'Yes'),
 (3, 'Syngonium Yellow', 300000, 'Tanaman ini adalah tanaman hias', 'Tanaman Hias', 'YellowVarie.jpg', 'Yes'),
 (4, 'Bibit Bunga Matahari', 15000, 'Bibit Bunga Matahari', 'Bibit Tanaman Hias', 'benihmatahari.png', 'Yes'),
-(5, 'Anthurium Ace of Spades', 1000000, 'Tanaman ini adalah tanaman hias', 'Tanaman Hias', 'AnthuAce.jpg', 'No');
+(5, 'Anthurium Ace of Spades', 1000000, 'Tanaman ini adalah tanaman hias', 'Tanaman Hias', 'AnthuAce.jpg', 'No'),
+(6, 'Anthurium Silver Blush', 250000, 'Tanaman ini adalah Silver Blush', 'Tanaman Hias', 'silverblush.jpg', 'No'),
+(7, 'Sirih Aristolocia Leuceunora', 600000, 'Tanaman ini berjenis tanaman Sirih', 'Tanaman Hias', 'sirih.jpg', 'No'),
+(8, 'Anthurium Dorayaki Silver', 200000, 'Tanaman ini memiliki daun yang  berbentuk seperti dorayaki', 'Tanaman Hias', 'dorayaki.jpg', 'No'),
+(9, 'Anthurium Dressleri Hybrid', 250000, 'Jenis tanaman anthurium yang hybrid', 'Tanaman Hias', 'hybrid.jpg', 'No'),
+(10, 'Monstera Andansoni Variegata', 500000, 'Tanaman yang daun nya bolong-bolong', 'Tanaman Hias', 'Mons.jpg', 'No');
 
 -- --------------------------------------------------------
 
@@ -226,13 +230,13 @@ ALTER TABLE `orderuser`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `wishlist`

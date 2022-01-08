@@ -6,7 +6,7 @@ var login = function(data,callback) {
     var parameter = [data.email];
 
     db.getData(sql,parameter,function(result) {
-        if (result == null) {
+        if (result.length == 0) {
             callback(false);
         } else {
             if (hashPass.verify(data.password, result[0].password)) {

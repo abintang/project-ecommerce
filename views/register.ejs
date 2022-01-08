@@ -23,6 +23,12 @@
                 <% } %>
                 </div>
             <% } %>
+            <% if(locals.errorMessage) { %>
+                <div class="alert alert-danger alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Errors!</strong> <%= errorMessage %>
+                  </div>
+                  <% } %>
             <form method="post">
                     <div class="form-group">
                         <label>Nama Lengkap</label>

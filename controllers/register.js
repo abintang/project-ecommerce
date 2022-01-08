@@ -32,11 +32,11 @@ router.post('/', function(req,res) {
                     if(valid) {
                         res.redirect('/login');
                     } else {
-                        res.redirect('register', {errors: errors});
+                        res.render('../views/register', {errorMessage:'Email yang dimasukan telah terdaftar'});
                     }
                 });
             } else {
-                res.redirect('register', {errors: errors});
+                res.render('../views/register', {errorMessage:'Repeat Password yang dimasukan tidak sesuai'});
             }
         }
     });

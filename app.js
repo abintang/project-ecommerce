@@ -12,6 +12,8 @@ var cart = require('./controllers/cart');
 var about = require('./controllers/about');
 var profile = require('./controllers/profile');
 var order = require('./controllers/order');
+var admin = require('./controllers/admin');
+var { flash } = require('express-flash-message');
 var port = 8000;
 var path = require('path');
 
@@ -31,6 +33,7 @@ app.use(expressSession({
     resave: false
 }));
 app.use(express.static(path.join(__dirname, './assets')));
+app.use(flash({ sessionKeyName: 'flashMessage' }));
 
 // route
 app.use('/index', index);
@@ -43,6 +46,7 @@ app.use('/cart', cart);
 app.use('/dlyplant', about);
 app.use('/profile', profile);
 app.use('/order', order);
+app.use('/admin', admin);
 // server
 app.listen(port,function() {
     console.log('Server berjalan pada port ' + port + '.\nUntuk mengakses website ini dapat dilakukan dengan cara yaitu menuju http://localhost:'+port+'/ pada web browser.\nSebelum menggunakan website ini, dimohon untuk membaca panduan dan ketentuan penggunaan terlebih dahulu.');

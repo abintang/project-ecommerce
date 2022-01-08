@@ -8,6 +8,7 @@
     "ejs-lint": "^1.2.1",
     "express": "^4.17.1",
     "express-flash": "^0.0.2",
+    "express-flash-message": "^2.1.0",
     "express-session": "^1.17.2",
     "express-static": "^1.2.6",
     "mysql": "^2.18.1",

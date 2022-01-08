@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <%- include("../partials/admin/head.ejs") %>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <%- include("../partials/admin/header.ejs") %>
+    <%- include("../partials/admin/sidebar.ejs") %>
+    <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>List Users</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Alamat</th>
+                    <th>No Telepon</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <% if(typeof result!=='undefined') { %>
+                        <% var no = 1 %>
+                        <% for (var i=0 ; i<result.length ; i++) { %>
+                  <tr>
+                    <td><%= no %></td>
+                    <% no++ %>
+                    <td><%=result[i].nama_user %></td>
+                    <td><%=result[i].email %></td>
+                    <td><%=result[i].jenis_kelamin %></td>
+                    <td><%=result[i].alamat %></td>
+                    <td><%=result[i].no_tlp %></td>
+                </tbody>
+                <% } %>
+            <% } %>
+            </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</div>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+    <%- include("../partials/admin/head.ejs") %>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <%- include("../partials/admin/header.ejs") %>
+    <%- include("../partials/admin/sidebar.ejs") %>
+    <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <% if(typeof result!=='undefined') { %>
+                <% for (var i=0 ; i<result.length ; i++) { %>
+            <h1>List Products - <%=result[i].kategori %> </h1>
+          </div>
+          <% break; } %>
+          <% } %>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="col-md-6">
+                  <% if(typeof result!=='undefined') { %>
+                    <% for (var i=0 ; i<result.length ; i++) { %>
+                  <button type="button" class="btn btn-outline-success" id="formProduct" data-toggle="modal" data-target="#contact-modal"><i class="fa fa-book"></i> Tambah Product - <%=result[i].kategori %> </button>
+                  <div id="contact-modal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-book"></i> Tambah Product  - <%=result[i].kategori %> </h4>
+                            </div>
+                            <form method="post">
+                                <div class="modal-body">                
+                                    <div class="form-group">
+                                        <label for="name">Nama Product</label>
+                                        <input type="text" name="nama_product" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="email">Foto Product</label>
+                                      <input type="file" name="foto" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Harga</label>
+                                        <input type="number" name="harga" class="form-control">
+                                    </div>
+                                    <input type="hidden" name="kategori" value="<%=result[i].kategori %>">
+                                    <div class="form-group">
+                                        <label for="message">Keterangan</label>
+                                        <textarea name="keterangan" class="form-control"></textarea>
+                                    </div>                    
+                                </div>
+                                <div class="modal-footer">                    
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <input type="submit" class="btn btn-success" id="submit">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                  <% break; } %>
+                  <% } %>
+                </div>
+              </div>
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Product</th>
+                    <th>Foto</th>
+                    <th>Harga</th>
+                    <th>Kategori</th>
+                    <th>Keterangan</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <% if(typeof result!=='undefined') { %>
+                        <% var no = 1 %>
+                        <% for (var i=0 ; i<result.length ; i++) { %>
+                  <tr>
+                    <td><%= no %></td>
+                    <% no++ %>
+                    <td>
+                    <%=result[i].nama_product %>
+                    </td>
+                    <td>
+                    <img src="/images/<%=result[i].foto; %>" class="img-md">
+                    </td>
+                    <td><%= rupiah.convert(result[i].harga) %></td>
+                    <td><%=result[i].kategori %></td>
+                    <td><%=result[i].keterangan %></td>
+                </tbody>
+                <% } %>
+            <% } %>
+            </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</div>
+</body>
+</html>

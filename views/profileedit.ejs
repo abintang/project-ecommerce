@@ -91,6 +91,7 @@
           <h5>errors</h5>
       <% for(var i = 0; i < errors.length; i++){ %>
           <p><%= errors[i].message %></p>
+          <a href="javascript: history.back()" class="btn btn-light"> &laquo Go back</a>
       <% } %>
       </div>
   <% } %>

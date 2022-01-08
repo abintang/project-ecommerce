@@ -24,8 +24,23 @@
             </div>
         <% } %>
         <% if(locals.errorMessage) { %>
-            <div class="alert alert-danger" role="alert"><%= errorMessage %></div>
+            <div class="alert alert-danger alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Errors!</strong> <br><%= errorMessage %>
+              </div>
             <% } %>
+            <div class="alert alert-danger alert-dismissible" role="alert" id="loginAlert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Errors!</strong><br>Login is required, silahkan login terlebih dahulu jikalau ingin menggunakan fitur tersebut !
+              </div>
+            <script>
+                $('#loginAlert').hide();
+                const urlParams = new URLSearchParams(window.location.search);
+                const myParam = urlParams.get('error');
+                if(myParam == "Incorrect_Credential") {
+                    $('#loginAlert').show();
+                }
+            </script>
           <form method="post">
               <div class="form-group">
                  <input name="email" class="form-control" placeholder="Email" type="text">

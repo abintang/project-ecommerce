@@ -1,7 +1,7 @@
 module.exports={
 	registrasi: {
 		nama_user: {required: true,message: 'Nama field required'},
-		email: {required: true,pattern: /\S+@\S+\.\S+/,message: 'Input valid Email, ex: @gmail, @yahoo'},
+		email: {required: true,pattern: /\S+@\S+\.\S+/,message: 'Input valid Email required, ex: @gmail, @yahoo'},
 		jenis_kelamin: {required: true,message: 'Jenis Kelamin field required'},
 		alamat: {required: true,message: 'Alamat field required'},
 		no_tlp: {required: true,message: 'Input Valid Nomor Telepon and field is required'},

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+    <%- include("../partials/admin/head.ejs") %>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <%- include("../partials/admin/header.ejs") %>
+    <%- include("../partials/admin/sidebar.ejs") %>
+    <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>List Orders - Dikirim </h1>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama Lengkap</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Total Harga</th>
+                    <th>Alamat</th>
+                    <th>No Telepon</th>
+                    <th>Status</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <% if(typeof result!=='undefined') { %>
+                        <% var no = 1 %>
+                        <% for (var i=0 ; i<result.length ; i++) { %>
+                  <tr>
+                    <td><%= no %></td>
+                    <% no++ %>
+                    <td>
+                    <%=result[i].nama_user %>
+                    </td>
+                    <td>
+                        <figure class="itemside">
+                            <div class="aside"><img src="/images/<%=result[i].foto; %>" class="img-sm"></div>
+                            <figcaption class="info">
+                                <a class="title text-dark"> <%=result[i].nama_product %></a>
+                            </figcaption>
+                        </figure>
+                    </td>
+                    <td>
+                        <var class="price" style="text-align: left;"><%=result[i].quantity %></var> 
+                    </td>
+                    <td> 
+                    <%= rupiah.convert(result[i].total_harga) %>
+                    </td>
+                    <td>
+                    <%=result[i].alamat %>
+                    </td>
+                    <td>
+                    <%=result[i].no_tlp %>
+                    </td>
+                    <td>
+                    <%=result[i].status %>
+                    </td>
+                </tbody>
+                <% } %>
+            <% } %>
+            </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</div>
+</body>
+</html>

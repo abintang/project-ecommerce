@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+    <%- include("../partials/head.ejs") %>
+</head>
+
+<body>
+    <section class="section-pagetop bg">
+    <br>
+    <br>
+    <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="../images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+            </div>
+            <div class="col-md-6 contents">
+              <div class="row justify-content-center">
+                <div class="col-md-8">
+                  <div class="mb-4">
+                  <h3>Admin dlyplants.id - Sign In</h3>
+                  <p class="mb-4">isi form login dibawah untuk mendapatkan hak akses Admin</p>
+                </div>
+                <% if(typeof errors !== 'undefined'){ %>
+                    <div class="alert alert-danger">
+                        <h5>errors</h5>
+                    <% for(var i = 0; i < errors.length; i++){ %>
+                        <p><%= errors[i].message %></p>
+                    <% } %>
+                    </div>
+                <% } %>
+                <% if(locals.errorMessageAdmin) { %>
+                  <div class="alert alert-danger alert-dismissible">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      <strong>Errors!</strong> <br><%= errorMessageAdmin %>
+                    </div>
+                    <% } %>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="loginAlertAdmin">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      <strong>Errors!</strong><br>Login is required, silahkan login terlebih dahulu jikalau ingin menggunakan fitur tersebut !
+                    </div>
+                  <script>
+                      $('#loginAlertAdmin').hide();
+                      const urlParams = new URLSearchParams(window.location.search);
+                      const myParam = urlParams.get('error');
+                      if(myParam == "Incorrect_Credential") {
+                          $('#loginAlertAdmin').show();
+                      }
+                  </script>
+                <form method="post">
+                  <div class="form-group first">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username">
+    
+                  </div>
+                  <div class="form-group last mb-4">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                    
+                  </div>
+                  
+                  <div class="d-flex mb-5 align-items-center">
+                    <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                      <input type="checkbox" checked="checked"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                  </div>
+    
+                  <input type="submit" value="Log In" class="btn btn-block btn-primary">
+    
+                </form>
+                </div>
+              </div>
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+</body>
+
+</html>
