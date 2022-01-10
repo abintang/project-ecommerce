@@ -8,7 +8,21 @@ var authAdmin = require('../config/isAdmin');
 var product = require.main.require('./models/product-model');
 var rupiah = require('rupiah-format');
 var addValidation = require.main.require('./validation/addProduct');
+var multer =  require('multer');
+var path = require('path');
 
+var uploadImage = multer.diskStorage({
+    destination: function(req,file,callback) {
+        callback(null, path.join(__dirname, "../assets/images"))
+    },
+    filename: (req,file,callback) => {
+        callback(null, file.originalname)
+    }
+})
+
+var upload = multer({
+    storage:uploadImage
+});
 
 router.get('/', authAdmin,function(req,res){
     res.render('../views/admin/index')
@@ -67,10 +81,10 @@ router.get('/listallproducts', authAdmin, function(req,res) {
     });
 });
 
-router.post('/listallproducts', authAdmin, function(req,res) {
+router.post('/listallproducts',upload.single('foto') ,authAdmin, function(req,res) {
     var data = {
         nama_product: req.body.nama_product,
-        foto: req.body.foto,
+        foto: req.file.filename,
         harga: req.body.harga,
         kategori: req.body.kategori,
         keterangan: req.body.keterangan
@@ -104,10 +118,10 @@ router.get('/listtanaman', authAdmin, function(req,res) {
     });
 });
 
-router.post('/listtanaman', authAdmin, function(req,res) {
+router.post('/listtanaman', authAdmin, upload.single('foto'), function(req,res) {
     var data = {
         nama_product: req.body.nama_product,
-        foto: req.body.foto,
+        foto: req.file.filename,
         harga: req.body.harga,
         kategori: req.body.kategori,
         keterangan: req.body.keterangan
@@ -141,10 +155,10 @@ router.get('/listbibit', authAdmin, function(req,res) {
     });
 });
 
-router.post('/listbibit', authAdmin, function(req,res) {
+router.post('/listbibit', authAdmin, upload.single('foto'), function(req,res) {
     var data = {
         nama_product: req.body.nama_product,
-        foto: req.body.foto,
+        foto: req.file.filename,
         harga: req.body.harga,
         kategori: req.body.kategori,
         keterangan: req.body.keterangan

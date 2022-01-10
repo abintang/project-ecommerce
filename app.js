@@ -13,7 +13,6 @@ var about = require('./controllers/about');
 var profile = require('./controllers/profile');
 var order = require('./controllers/order');
 var admin = require('./controllers/admin');
-var { flash } = require('express-flash-message');
 var port = 8000;
 var path = require('path');
 
@@ -33,7 +32,6 @@ app.use(expressSession({
     resave: false
 }));
 app.use(express.static(path.join(__dirname, './assets')));
-app.use(flash({ sessionKeyName: 'flashMessage' }));
 
 // route
 app.use('/index', index);
