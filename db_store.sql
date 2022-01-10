@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2022 at 07:34 AM
+-- Generation Time: Jan 10, 2022 at 04:40 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -61,7 +61,7 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`id_cart`, `id_user`, `id`, `quantity`, `total_harga`) VALUES
 (7, 2, 5, 1, 25000),
-(8, 1, 1, 1, 2500000);
+(12, 1, 9, 5, 1250000);
 
 -- --------------------------------------------------------
 
@@ -83,9 +83,11 @@ CREATE TABLE `orderuser` (
 --
 
 INSERT INTO `orderuser` (`id_order`, `id_user`, `id`, `quantity`, `total_harga`, `status`) VALUES
-(5, 1, 3, 3, 900000, 'Menunggu Konfirmasi'),
-(6, 1, 4, 1, 15000, 'Diproses'),
-(7, 1, 1, 3, 7500000, 'Dikirim');
+(5, 1, 3, 3, 900000, 'Dikirim'),
+(6, 1, 4, 1, 15000, 'Diterima'),
+(7, 1, 1, 3, 7500000, 'Diterima'),
+(11, 1, 10, 5, 2500000, 'Diproses'),
+(12, 1, 2, 2, 900000, 'Menunggu Konfirmasi');
 
 -- --------------------------------------------------------
 
@@ -117,7 +119,10 @@ INSERT INTO `product` (`id`, `nama_product`, `harga`, `keterangan`, `kategori`, 
 (7, 'Sirih Aristolocia Leuceunora', 600000, 'Tanaman ini berjenis tanaman Sirih', 'Tanaman Hias', 'sirih.jpg', 'No'),
 (8, 'Anthurium Dorayaki Silver', 200000, 'Tanaman ini memiliki daun yang  berbentuk seperti dorayaki', 'Tanaman Hias', 'dorayaki.jpg', 'No'),
 (9, 'Anthurium Dressleri Hybrid', 250000, 'Jenis tanaman anthurium yang hybrid', 'Tanaman Hias', 'hybrid.jpg', 'No'),
-(10, 'Monstera Andansoni Variegata', 500000, 'Tanaman yang daun nya bolong-bolong', 'Tanaman Hias', 'Mons.jpg', 'No');
+(10, 'Monstera Andansoni Variegata', 500000, 'Tanaman yang daun nya bolong-bolong', 'Tanaman Hias', 'Mons.jpg', 'No'),
+(11, 'Bibit Bunga California', 12000, 'Ini adalah bibit bunga', 'Bibit Tanaman Hias', 'bibitbunga.jpeg', 'No'),
+(12, 'Anthurium Warocqueanum', 1100000, 'Tanaman ini Berjenis Anthurium', 'Tanaman Hias', 'waro.jpeg', 'No'),
+(15, 'Bibit Bunga Petunia', 12000, 'Bibit ini adalah bibit bunga petunia', 'Bibit Tanaman Hias', 'haira-seed-bunga-petunia.jpg', 'No');
 
 -- --------------------------------------------------------
 
@@ -218,19 +223,19 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_cart` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `orderuser`
 --
 ALTER TABLE `orderuser`
-  MODIFY `id_order` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_order` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user`
