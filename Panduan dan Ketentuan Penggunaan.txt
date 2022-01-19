@@ -1,0 +1,22 @@
+* KETENTUAN *
+-> Pastikan laptop atau pc yang digunakan untuk merunning website ini memiliki jaringan internet, supaya bisa terhubung dengan chat-bot dan apabila tidak
+   terhubung, Maka website ini tidak akan bisa dirunning.
+-> Pastikan laptop atau pc telah terinstall node js.
+-> Pastikan laptop atau pc sudah terinstall XAMPP dan sudah mengimport database db_store.sql yang terdapat pada folder ini, dan pastikan juga menyalakan
+   MySQL pada XAMPP apabila telah mengimport database db_store.sql di phpmyadmin.
+
+
+* Access Admin : *
+username : admin
+password : akuadmin
+
+* PANDUAN *
+-> Untuk menjalankan aplikasi ini diwajibkan untuk melakukan segala sesuatu yang berada di Ketentuan diatas.
+-> Untuk menjalankan aplikasi ini, user bisa merunning dengan cara menggunakan command - node app - (tanpa tanda '-') pada terminal yang berada di 
+   text editor (Visual Studio Code).
+-> Dan apabila user telah merunning website ini, maka untuk mengakses website ini dapat dengan menuju http://localhost:8000/ pada web browser.
+-> Apabila sudah terbuka, maka user bisa melakukan segala sesuatu yang berada pada website ini. Seperti mendaftar sebagai user dlyplants.id, order, melihat
+   product, login kedalam page admin (username dan password bisa dilihat pada keterangan diatas dan button login admin berada pada footer), 
+   dan lain sebagainya.
+-> Untuk mengakses Chat-bot, user/pelanggan bisa mengklik button whatsapp pada footer website apabila website ini telah running dan langsung menghubungi
+   nomor yang tertera.
